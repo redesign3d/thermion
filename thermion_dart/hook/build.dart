@@ -34,21 +34,22 @@ void main(List<String> args) async {
     // package itself on a Linux host(e.g. for dart_services backed), so if
     // we detect that we're running on Linux, add some dummy native code
     // assets and exit early.
-    if (platform == "linux") {
-      final linkMode = DynamicLoadingBundled();
-      final name = "thermion_dart.dart";
-      final libUri = config.outputDirectory
-          .resolve(config.targetOS.libraryFileName(name, linkMode));
-      output.addAsset(NativeCodeAsset(
-        package: config.packageName,
-        name: name,
-        file: libUri,
-        linkMode: linkMode,
-        os: config.targetOS,
-        architecture: config.dryRun ? null : config.targetArchitecture,
-      ));
-      return;
-    }
+    
+    //if (platform == "linux") {
+    //  final linkMode = DynamicLoadingBundled();
+    //  final name = "thermion_dart.dart";
+    //  final libUri = config.outputDirectory
+    //      .resolve(config.targetOS.libraryFileName(name, linkMode));
+    //  output.addAsset(NativeCodeAsset(
+    //    package: config.packageName,
+    //    name: name,
+    //    file: libUri,
+    //    linkMode: linkMode,
+    //    os: config.targetOS,
+    //    architecture: config.dryRun ? null : config.targetArchitecture,
+    //  ));
+    //  return;
+    //}
 
     var libDir = config.dryRun ? "" : (await getLibDir(config, logger)).path;
 
